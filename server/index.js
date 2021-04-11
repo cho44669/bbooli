@@ -1,7 +1,6 @@
  const express = require ("express")
  const app = express()
- const port = 5000
- const { auth } = require('./middlieware/auth');
+ const { auth } = require('../middlieware/auth');
  const { User} = require("./models/User");
  const bodyParser = require('body-parser');
  const config = require('./config/key'); 
@@ -21,6 +20,10 @@
     .catch(err => console.log(err))
 
  app.get('/', (req, res) => res.send('Helld world! 환영합니다.'))
+
+ app.get ('/api/hello', (req,res) => {
+   res.send("안녕하세요")
+ })
 
  //주소 마지막 end 포인터 /register
  app.post('/api/user/register', (req, res) => {
@@ -97,5 +100,7 @@ app.get('/api/users/logout', auth, (req, res) => {
         })
 })
 
+
+const port = 5000
 
  app.listen(port, () => console.log(`Example app listening on port ${port}!`))
