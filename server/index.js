@@ -26,7 +26,7 @@
  })
 
  //주소 마지막 end 포인터 /register
- app.post('/api/user/register', (req, res) => {
+ app.post('/api/users/register', (req, res) => {
 
     //회원가입 할 때 필요한 정보들을 client에서 가져오면
     //그것들을 데이터베이스에 넣어준다.
@@ -42,7 +42,7 @@
             })
     })
 })
-app.post('/api/user/login', (req,res) => {
+app.post('/api/users/login', (req,res) => {
 
     //요청된 이메일을 데이터베이스에서 있는지 찾는다.
     User.findOne({ email: req.body.email}, (err, user) => {
