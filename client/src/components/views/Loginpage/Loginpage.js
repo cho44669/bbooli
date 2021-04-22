@@ -1,7 +1,7 @@
-import Axios from 'axios'
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {loginUser} from '../../../_actions/user_action';
+import {withRouter} from 'react-router-dom';
 
 function LoginPage(props) {
 
@@ -21,8 +21,8 @@ function LoginPage(props) {
         setPassword(event.currentTarget.value)
     }
     const onSubmitHandler = (event) => {
-        //proventDefault를 해주지 않으면 페이지가 리프레쉬가 되기때문에 .
-        event.proventDefault();
+        //preventDefault를 해주지 않으면 페이지가 리프레쉬가 되기때문에 . 리프레쉬가 되면 다음 일을 할 수가 없음.
+        event.preventDefault();
 
         let body ={
             email: Email,
@@ -59,4 +59,4 @@ function LoginPage(props) {
     )
 }
 
-export default LoginPage
+export default withRouter(LoginPage)
